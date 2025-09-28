@@ -35,7 +35,6 @@ const ScanPage: React.FC = () => {
 
   const handleManualInput = () => {
     if (qrResult.trim()) {
-      // Simulate QR code scan result - navigate to drug info
       const drugId = qrResult.toLowerCase().replace(/\s+/g, '-');
       navigate(`/drug/${drugId}`);
     }
@@ -54,10 +53,8 @@ const ScanPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-lime-50 via-white to-lime-50/30 py-12 relative overflow-hidden">
-      {/* Background Decorations */}
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-lime-50/30 py-12 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Changed background colors to lime shades */}
         <div className="absolute top-10 right-10 w-64 h-64 bg-lime-200/20 rounded-full blur-3xl"></div>
         <div className="absolute bottom-10 left-10 w-80 h-80 bg-lime-300/10 rounded-full blur-3xl"></div>
       </div>
@@ -65,9 +62,8 @@ const ScanPage: React.FC = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <div className="relative inline-block mb-8">
-            {/* Changed primary accent color to lime-400/500 */}
-            <div className="absolute inset-0 bg-lime-400 rounded-full blur-xl opacity-30"></div>
-            <div className="relative bg-gradient-to-br from-lime-500 to-lime-600 p-6 rounded-3xl shadow-2xl">
+            <div className="absolute inset-0 bg-lime-500 rounded-full blur-xl opacity-30"></div>
+            <div className="relative bg-gradient-to-br from-lime-600 to-lime-700 p-6 rounded-3xl shadow-2xl">
               <QrCode className="h-16 w-16 text-white" />
             </div>
           </div>
@@ -81,51 +77,46 @@ const ScanPage: React.FC = () => {
             and related educational content instantly.
           </p>
 
-          {/* Quick Stats */}
-          {/* Changed text color to lime-600 */}
           <div className="flex justify-center space-x-8 mb-8">
-            <div className="flex items-center space-x-2 text-lime-600">
+            <div className="flex items-center space-x-2 text-lime-700">
               <Zap className="h-5 w-5" />
               <span className="font-semibold">Instant Results</span>
             </div>
-            <div className="flex items-center space-x-2 text-lime-600">
+            <div className="flex items-center space-x-2 text-lime-700">
               <Shield className="h-5 w-5" />
               <span className="font-semibold">100% Secure</span>
             </div>
-            <div className="flex items-center space-x-2 text-lime-600">
+            <div className="flex items-center space-x-2 text-lime-700">
               <Clock className="h-5 w-5" />
               <span className="font-semibold">24/7 Available</span>
             </div>
           </div>
         </div>
 
-        <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden border border-lime-100">
-          {/* Camera Section */}
+        <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
           <div className="p-10">
-            {/* Changed container background to lime shades */}
             <div className="bg-gradient-to-br from-lime-50 to-lime-100/50 rounded-2xl p-10 mb-8 relative overflow-hidden">
-              {/* Decorative elements */}
+
               <div className="absolute top-4 right-4 w-20 h-20 bg-lime-200/30 rounded-full blur-2xl"></div>
               <div className="absolute bottom-4 left-4 w-16 h-16 bg-lime-300/20 rounded-full blur-xl"></div>
               
               {isScanning ? (
-                <div className="aspect-square max-w-md mx-auto bg-black rounded-2xl overflow-hidden shadow-2xl border-4 border-lime-200">
+                <div className="aspect-square max-w-md mx-auto bg-black rounded-2xl overflow-hidden shadow-2xl border-4 border-lime-400">
                   <video
                     ref={videoRef}
                     autoPlay
                     playsInline
                     className="w-full h-full object-cover rounded-xl"
                   />
-                  <div className="absolute inset-0 border-2 border-lime-400 rounded-2xl animate-pulse"></div>
+                  <div className="absolute inset-0 border-2 border-lime-600 rounded-2xl animate-pulse"></div>
                 </div>
               ) : (
-                <div className="aspect-square max-w-md mx-auto bg-gradient-to-br from-lime-100 to-lime-200/50 rounded-2xl flex items-center justify-center border-3 border-dashed border-lime-300 hover:border-lime-400 transition-all duration-500 group cursor-pointer hover:scale-105">
+                <div className="aspect-square max-w-md mx-auto bg-gradient-to-br from-lime-100 to-lime-200/50 rounded-2xl flex items-center justify-center border-3 border-dashed border-lime-400 hover:border-lime-600 transition-all duration-500 group cursor-pointer hover:scale-105">
                   <div className="text-center">
                     <div className="relative mb-6">
-                      {/* Changed accent color to lime-400 */}
-                      <div className="absolute inset-0 bg-lime-400 rounded-full blur-xl opacity-40 group-hover:opacity-60 transition-opacity duration-300"></div>
+                      <div className="absolute inset-0 bg-lime-500 rounded-full blur-xl opacity-40 group-hover:opacity-60 transition-opacity duration-300"></div>
                       <div className="relative bg-white rounded-full p-8 shadow-2xl group-hover:scale-110 transition-transform duration-500">
-                        <Camera className="h-20 w-20 text-lime-600 mx-auto" />
+                        <Camera className="h-20 w-20 text-lime-700 mx-auto" />
                       </div>
                     </div>
                     
@@ -133,15 +124,15 @@ const ScanPage: React.FC = () => {
                     <p className="text-lime-600 text-lg mb-6">Camera preview will appear here</p>
                     
                     <div className="flex justify-center items-center space-x-2 mb-4">
-                      <Sparkles className="h-5 w-5 text-lime-500 animate-pulse" />
-                      <span className="text-lime-600 font-medium">Powered by AI Technology</span>
-                      <Sparkles className="h-5 w-5 text-lime-500 animate-pulse" />
+                      <Sparkles className="h-5 w-5 text-lime-600 animate-pulse" />
+                      <span className="text-lime-700 font-medium">Powered by AI Technology</span>
+                      <Sparkles className="h-5 w-5 text-lime-600 animate-pulse" />
                     </div>
                     
                     <div className="flex justify-center space-x-2">
-                      <div className="w-3 h-3 bg-lime-400 rounded-full animate-bounce"></div>
-                      <div className="w-3 h-3 bg-lime-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
-                      <div className="w-3 h-3 bg-lime-400 rounded-full animate-bounce" style={{animationDelay: '0.4s'}}></div>
+                      <div className="w-3 h-3 bg-lime-500 rounded-full animate-bounce"></div>
+                      <div className="w-3 h-3 bg-lime-500 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                      <div className="w-3 h-3 bg-lime-500 rounded-full animate-bounce" style={{animationDelay: '0.4s'}}></div>
                     </div>
                   </div>
                 </div>
@@ -152,8 +143,7 @@ const ScanPage: React.FC = () => {
               {!isScanning ? (
                 <button
                   onClick={startCamera}
-                  {/* Changed button color to lime */}
-                  className="group bg-gradient-to-r from-lime-500 to-lime-600 text-white px-10 py-4 rounded-2xl font-bold text-lg hover:from-lime-600 hover:to-lime-700 transition-all duration-300 flex items-center justify-center space-x-3 shadow-xl shadow-lime-200 hover:shadow-2xl hover:scale-105"
+                  className="group bg-gradient-to-r from-lime-600 to-lime-700 text-white px-10 py-4 rounded-2xl font-bold text-lg hover:from-lime-700 hover:to-lime-800 transition-all duration-300 flex items-center justify-center space-x-3 shadow-xl shadow-lime-300 hover:shadow-2xl hover:scale-105"
                 >
                   <Camera className="h-6 w-6 group-hover:rotate-12 transition-transform duration-300" />
                   <span>Start Camera</span>
@@ -168,10 +158,7 @@ const ScanPage: React.FC = () => {
               )}
             </div>
           </div>
-
-          {/* Manual Input Section */}
-          {/* Changed background gradient to lime shades */}
-          <div className="border-t border-lime-100 p-10 bg-gradient-to-r from-lime-50/50 to-white">
+          <div className="border-t border-gray-100 p-10 bg-gradient-to-r from-lime-50/50 to-white">
             <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">
               Or Enter Medicine Name Manually
             </h3>
@@ -182,24 +169,19 @@ const ScanPage: React.FC = () => {
                 value={qrResult}
                 onChange={(e) => setQrResult(e.target.value)}
                 placeholder="Enter medicine name..."
-                {/* Changed input border/focus to lime shades */}
-                className="flex-1 px-6 py-4 border-2 border-lime-200 rounded-xl focus:ring-4 focus:ring-lime-200 focus:border-lime-500 transition-all duration-300 text-lg"
+                className="flex-1 px-6 py-4 border-2 border-lime-300 rounded-xl focus:ring-4 focus:ring-lime-200 focus:border-lime-600 transition-all duration-300 text-lg"
               />
               <button
                 onClick={handleManualInput}
                 disabled={!qrResult.trim()}
-                {/* Changed search button color to lime */}
-                className="bg-gradient-to-r from-lime-500 to-lime-600 text-white px-8 py-4 rounded-xl font-bold hover:from-lime-600 hover:to-lime-700 transition-all duration-300 disabled:from-gray-400 disabled:to-gray-500 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl hover:scale-105 disabled:hover:scale-100"
+                className="bg-gradient-to-r from-lime-600 to-lime-700 text-white px-8 py-4 rounded-xl font-bold hover:from-lime-700 hover:to-lime-800 transition-all duration-300 disabled:from-gray-400 disabled:to-gray-500 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl hover:scale-105 disabled:hover:scale-100"
               >
                 <Upload className="h-6 w-6" />
                 <span>Search</span>
               </button>
             </div>
           </div>
-
-          {/* Demo Medicines */}
-          {/* Changed border and background gradient to lime shades */}
-          <div className="border-t border-lime-100 p-10 bg-gradient-to-r from-white to-lime-50/30">
+          <div className="border-t border-gray-100 p-10 bg-gradient-to-r from-white to-lime-50/30">
             <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">
               Try Demo Medicines
             </h3>
@@ -209,8 +191,7 @@ const ScanPage: React.FC = () => {
                 <button
                   key={drug.id}
                   onClick={() => simulateScan(drug.name)}
-                  {/* Changed demo medicine buttons to use lime shades */}
-                  className="group bg-white border-2 border-lime-200 text-lime-700 px-4 py-3 rounded-xl font-semibold hover:bg-lime-50 hover:border-lime-300 transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105"
+                  className="group bg-white border-2 border-lime-300 text-lime-700 px-4 py-3 rounded-xl font-semibold hover:bg-lime-50 hover:border-lime-400 transition-all duration-300 shadow-md hover:shadow-lg hover:scale-105"
                 >
                   <span className="flex flex-col items-center space-y-1">
                     <span className="text-2xl">💊</span>
@@ -223,8 +204,7 @@ const ScanPage: React.FC = () => {
             <div className="text-center mt-6">
               <Link
                 to="/qr-codes"
-                {/* Changed link color to lime-600 */}
-                className="inline-flex items-center space-x-2 text-lime-600 hover:text-lime-700 font-semibold hover:underline transition-all duration-300"
+                className="inline-flex items-center space-x-2 text-lime-700 hover:text-lime-800 font-semibold hover:underline transition-all duration-300"
               >
                 <QrCode className="h-5 w-5" />
                 <span>View All QR Codes ({drugs.length} medicines)</span>
