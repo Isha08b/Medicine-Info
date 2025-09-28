@@ -193,10 +193,11 @@ const RemindersPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-olive-50 via-white to-olive-50/30 py-8 relative overflow-hidden">
+
+    <div className="min-h-screen bg-gradient-to-br from-lime-50 via-white to-lime-50/30 py-8 relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-20 right-10 w-72 h-72 bg-olive-200/20 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-20 left-10 w-96 h-96 bg-olive-300/10 rounded-full blur-3xl"></div>
+            <div className="absolute top-20 right-10 w-72 h-72 bg-lime-200/20 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-20 left-10 w-96 h-96 bg-lime-300/10 rounded-full blur-3xl"></div>
         </div>
         
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -204,7 +205,7 @@ const RemindersPage: React.FC = () => {
         <div className="flex items-center justify-between mb-8">
           <Link
             to="/"
-            className="inline-flex items-center space-x-2 text-olive-600 hover:text-olive-700 group bg-white/80 backdrop-blur-sm px-4 py-2 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-olive-100"
+            className="inline-flex items-center space-x-2 text-lime-600 hover:text-lime-700 group bg-white/80 backdrop-blur-sm px-4 py-2 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-lime-100"
           >
             <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />
             <span className="font-medium">Home</span>
@@ -215,7 +216,7 @@ const RemindersPage: React.FC = () => {
                 resetForm(); 
                 setShowAddForm(true);
             }}
-            className="bg-gradient-to-r from-olive-500 to-olive-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-olive-600 hover:to-olive-700 transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-xl"
+            className="bg-gradient-to-r from-lime-500 to-lime-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-lime-600 hover:to-lime-700 transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-xl"
           >
             <Plus className="h-4 w-4" />
             <span>Add Reminder</span>
@@ -224,8 +225,8 @@ const RemindersPage: React.FC = () => {
 
         <div className="text-center mb-12">
             <div className="relative inline-block mb-6">
-                <div className="absolute inset-0 bg-olive-400 rounded-full blur-2xl opacity-30"></div>
-                <div className="relative bg-gradient-to-br from-olive-500 to-olive-600 p-5 rounded-full shadow-2xl">
+                <div className="absolute inset-0 bg-lime-400 rounded-full blur-2xl opacity-30"></div>
+                <div className="relative bg-gradient-to-br from-lime-500 to-lime-600 p-5 rounded-full shadow-2xl">
                     <Bell className="h-10 w-10 text-white" />
                 </div>
             </div>
@@ -241,8 +242,7 @@ const RemindersPage: React.FC = () => {
 
         {showAddForm && (
           <div className="fixed inset-0 z-50 bg-gray-900 bg-opacity-50 flex items-center justify-center p-4">
-            {/* REDUCED SIZE: Changed max-w-3xl to max-w-xl and p-8 to p-6 */}
-            <div className="bg-white rounded-3xl shadow-3xl w-full max-w-xl p-6 border-4 border-olive-100 animate-fade-in-up">
+            <div className="bg-white rounded-3xl shadow-3xl w-full max-w-xl max-h-[95vh] overflow-y-auto p-4 sm:p-6 lg:p-8 border-4 border-lime-100 animate-fade-in-up">
               
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-2xl font-bold text-gray-900">
@@ -259,27 +259,27 @@ const RemindersPage: React.FC = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                     <div className="relative">
-                        <Pill className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-olive-400" />
+                        <Pill className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-lime-400" />
                         <input
                             type="text"
                             name="medicineName"
                             required
                             value={formData.medicineName}
                             onChange={handleInputChange}
-                            className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-olive-200 focus:border-olive-500 transition-all font-medium"
+                            className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-lime-200 focus:border-lime-500 transition-all font-medium"
                             placeholder="Medicine Name *"
                         />
                     </div>
 
                     <div className="relative">
-                        <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-2xl text-olive-400 font-bold leading-none">#</span>
+                        <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-2xl text-lime-400 font-bold leading-none">#</span>
                         <input
                             type="text"
                             name="dosage"
                             required
                             value={formData.dosage}
                             onChange={handleInputChange}
-                            className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-olive-200 focus:border-olive-500 transition-all font-medium"
+                            className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-lime-200 focus:border-lime-500 transition-all font-medium"
                             placeholder="Dosage (e.g., 1 tablet)"
                         />
                     </div>
@@ -294,7 +294,7 @@ const RemindersPage: React.FC = () => {
                         name="frequency"
                         value={formData.frequency}
                         onChange={handleInputChange}
-                        className="w-full px-3 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-olive-200 focus:border-olive-500 transition-all appearance-none bg-white font-medium"
+                        className="w-full px-3 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-lime-200 focus:border-lime-500 transition-all appearance-none bg-white font-medium"
                     >
                         <option value="daily">Daily</option>
                         <option value="twice-daily">Twice Daily (BID)</option>
@@ -302,8 +302,7 @@ const RemindersPage: React.FC = () => {
                         <option value="weekly">Weekly</option>
                     </select>
                 </div>
-
-                <div className="bg-olive-50 p-4 rounded-xl border border-olive-200">
+                <div className="bg-lime-50 p-4 rounded-xl border border-lime-200">
                     <label className="block text-sm font-semibold text-gray-700 mb-3 flex items-center space-x-2">
                         <Clock className='h-4 w-4' />
                         <span>Reminder Times *</span>
@@ -331,7 +330,7 @@ const RemindersPage: React.FC = () => {
                         <button
                             type="button"
                             onClick={addTimeSlot}
-                            className="bg-olive-200 text-olive-700 px-3 py-2 rounded-lg font-medium hover:bg-olive-300 transition-all flex items-center space-x-1 border border-olive-300 shadow-sm"
+                            className="bg-lime-200 text-lime-700 px-3 py-2 rounded-lg font-medium hover:bg-lime-300 transition-all flex items-center space-x-1 border border-lime-300 shadow-sm"
                         >
                             <Plus className="h-4 w-4" />
                             <span>Add Time</span>
@@ -351,7 +350,7 @@ const RemindersPage: React.FC = () => {
                             required
                             value={formData.startDate}
                             onChange={handleInputChange}
-                            className="w-full px-3 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-olive-200 focus:border-olive-500 transition-all font-medium"
+                            className="w-full px-3 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-lime-200 focus:border-lime-500 transition-all font-medium"
                         />
                     </div>
 
@@ -365,7 +364,7 @@ const RemindersPage: React.FC = () => {
                             name="endDate"
                             value={formData.endDate}
                             onChange={handleInputChange}
-                            className="w-full px-3 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-olive-200 focus:border-olive-500 transition-all font-medium"
+                            className="w-full px-3 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-lime-200 focus:border-lime-500 transition-all font-medium"
                         />
                     </div>
                 </div>
@@ -379,7 +378,7 @@ const RemindersPage: React.FC = () => {
                         rows={3}
                         value={formData.notes}
                         onChange={handleInputChange}
-                        className="w-full px-3 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-olive-200 focus:border-olive-500 transition-all font-medium"
+                        className="w-full px-3 py-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-lime-200 focus:border-lime-500 transition-all font-medium"
                         placeholder="e.g., Take with food, or before bed..."
                     />
                 </div>
@@ -394,7 +393,7 @@ const RemindersPage: React.FC = () => {
                     </button>
                     <button
                         type="submit"
-                        className="bg-gradient-to-r from-olive-500 to-olive-600 text-white px-8 py-3 rounded-xl font-bold hover:from-olive-600 hover:to-olive-700 transition-all shadow-lg shadow-olive-300/50"
+                        className="bg-gradient-to-r from-lime-500 to-lime-600 text-white px-8 py-3 rounded-xl font-bold hover:from-lime-600 hover:to-lime-700 transition-all shadow-lg shadow-lime-300/50"
                     >
                         {editingReminder ? 'Save Changes' : 'Create Reminder'}
                     </button>
@@ -406,8 +405,8 @@ const RemindersPage: React.FC = () => {
 
         <div className="space-y-6">
           {reminders.length === 0 ? (
-            <div className="text-center py-16 bg-white/70 backdrop-blur-sm rounded-3xl shadow-xl border border-olive-100">
-              <Pill className="h-16 w-16 text-olive-400 mx-auto mb-4" />
+            <div className="text-center py-16 bg-white/70 backdrop-blur-sm rounded-3xl shadow-xl border border-lime-100">
+              <Pill className="h-16 w-16 text-lime-400 mx-auto mb-4" />
               <h3 className="text-2xl font-bold text-gray-900 mb-2">No active reminders</h3>
               <p className="text-gray-600">Click "Add Reminder" to set up your first dose alarm. 🔔</p>
             </div>
@@ -417,7 +416,7 @@ const RemindersPage: React.FC = () => {
                 key={reminder.id} 
                 className={`bg-white/90 backdrop-blur-sm rounded-3xl p-6 border-l-8 transition-all duration-300 ${
                     isReminderOverdue(reminder) ? 'border-red-500 shadow-xl ring-2 ring-red-100' :
-                    reminder.isActive ? 'border-olive-500 shadow-xl hover:shadow-2xl' : 
+                    reminder.isActive ? 'border-lime-500 shadow-xl hover:shadow-2xl' : 
                     'border-gray-300 shadow-md hover:shadow-lg opacity-70'
                 }`}
               >
@@ -434,7 +433,7 @@ const RemindersPage: React.FC = () => {
                       )}
                       <span className={`px-3 py-1 rounded-full text-xs font-medium ${
                         reminder.isActive 
-                          ? 'bg-olive-100 text-olive-800' 
+                          ? 'bg-lime-100 text-lime-800' 
                           : 'bg-gray-100 text-gray-600'
                       }`}>
                         {reminder.isActive ? 'Active' : 'Paused'}
@@ -443,22 +442,22 @@ const RemindersPage: React.FC = () => {
 
                     <div className="grid md:grid-cols-3 gap-y-3 gap-x-4 text-sm text-gray-600 mb-3">
                         <div className="flex items-center space-x-2">
-                            <Pill className="h-4 w-4 text-olive-500" />
+                            <Pill className="h-4 w-4 text-lime-500" />
                             <span className="font-medium text-gray-800">{reminder.dosage}</span>
                         </div>
                         <div className="flex items-center space-x-2">
-                            <Repeat2 className="h-4 w-4 text-olive-500" />
+                            <Repeat2 className="h-4 w-4 text-lime-500" />
                             <span className="font-medium">{getFrequencyText(reminder.frequency)}</span>
                         </div>
                         <div className="flex items-center space-x-2">
-                            <Calendar className="h-4 w-4 text-olive-500" />
+                            <Calendar className="h-4 w-4 text-lime-500" />
                             <span className="font-medium">{reminder.startDate} {reminder.endDate ? `to ${reminder.endDate}` : '(Ongoing)'}</span>
                         </div>
                     </div>
 
                     <div className="flex flex-wrap gap-2 mb-3">
                         {reminder.times.map(time => (
-                            <span key={time} className="flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-semibold bg-olive-200 text-olive-800">
+                            <span key={time} className="flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-semibold bg-lime-200 text-lime-800">
                                 <Clock className="h-3 w-3" />
                                 <span>{time}</span>
                             </span>
@@ -485,7 +484,7 @@ const RemindersPage: React.FC = () => {
                     <button
                       onClick={() => editReminder(reminder)}
                       title="Edit Reminder"
-                      className="p-3 bg-olive-100 text-olive-600 hover:bg-olive-200 rounded-full transition-all duration-200 shadow-md"
+                      className="p-3 bg-lime-100 text-lime-600 hover:bg-lime-200 rounded-full transition-all duration-200 shadow-md"
                     >
                       <Edit className="h-5 w-5" />
                     </button>
