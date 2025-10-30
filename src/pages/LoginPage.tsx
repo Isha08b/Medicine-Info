@@ -23,19 +23,39 @@ const LoginPage: React.FC = () => {
     e.preventDefault();
     setIsLoading(true);
     
-    // Simple authentication - in production, validate against backend
     setTimeout(() => {
       setIsLoading(false);
-      // For demo purposes, accept any email/password combination
-      if (formData.email && formData.password) {
+
+      if (!formData.email || !formData.password) {
+        alert('Please enter both email and password');
+        return;
+      }
+      
+      // 1. Retrieve the registered user data
+      const storedUserDataString = localStorage.getItem(`user_${formData.email}`);
+
+      if (!storedUserDataString) {
+        alert('Account not found. Please sign up first.');
+        return;
+      }
+
+      const storedUserData = JSON.parse(storedUserDataString);
+      
+      // 2. Validate password against stored password
+      if (storedUserData.password === formData.password) {
+        // Successful Login
         localStorage.setItem('isAuthenticated', 'true');
-        localStorage.setItem('userEmail', formData.email);
+        localStorage.setItem('userEmail', storedUserData.email);
+        localStorage.setItem('userName', `${storedUserData.firstName} ${storedUserData.lastName}`);
         navigate('/');
       } else {
-        alert('Please enter both email and password');
+        // Failed Login
+        alert('Incorrect password. Please try again.');
       }
     }, 2000);
   };
+
+  // ... (Rest of the component remains the same)
 
   return (
     <div className="min-h-screen bg-white">

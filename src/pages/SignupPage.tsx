@@ -28,6 +28,7 @@ const SignupPage: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     if (formData.password !== formData.confirmPassword) {
       alert('Passwords do not match!');
       return;
@@ -36,27 +37,49 @@ const SignupPage: React.FC = () => {
       alert('Please accept the terms and conditions');
       return;
     }
+
+    // Check if the user is already registered (using email as unique key)
+    if (localStorage.getItem(`user_${formData.email}`)) {
+        alert('This email is already registered. Please log in.');
+        return;
+    }
     
     setIsLoading(true);
-    
-    // Simple registration - in production, send to backend
+
     setTimeout(() => {
       setIsLoading(false);
-      // For demo purposes, accept any valid form data
+      
       if (formData.email && formData.password && formData.firstName && formData.lastName) {
-        localStorage.setItem('isAuthenticated', 'true');
-        localStorage.setItem('userEmail', formData.email);
-        localStorage.setItem('userName', `${formData.firstName} ${formData.lastName}`);
-        navigate('/');
+        
+        // 1. Store user data in localStorage (our temporary "database")
+        const userData = {
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            email: formData.email,
+            phone: formData.phone,
+            dateOfBirth: formData.dateOfBirth,
+            password: formData.password, // IMPORTANT: In a real app, hash the password before storing!
+        };
+
+        // Store data using a unique key based on the email
+        localStorage.setItem(`user_${formData.email}`, JSON.stringify(userData));
+        
+        // Clear old general login flag
+        localStorage.removeItem('isAuthenticated');
+
+        alert('Registration successful! Please log in to continue.');
+        navigate('/login'); // 2. Force navigation to Login page
       } else {
         alert('Please fill in all required fields');
       }
     }, 2000);
   };
 
+  // ... (Rest of the component remains the same)
+
   return (
     <div className="min-h-screen bg-white">
-
+      {/* ... (Existing JSX structure) */}
       <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl w-full space-y-8">
           {/* Header */}
