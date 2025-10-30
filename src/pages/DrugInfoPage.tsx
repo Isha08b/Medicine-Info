@@ -28,16 +28,16 @@ const DrugInfoPage: React.FC = () => {
   const videoId = getYouTubeVideoId(drug.videoUrl);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-olive-50 via-white to-olive-50/30 py-8 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-primary-50/30 py-8 relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 right-10 w-72 h-72 bg-olive-200/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 left-10 w-96 h-96 bg-olive-300/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 right-10 w-72 h-72 bg-primary-200/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-10 w-96 h-96 bg-primary-300/10 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link
           to="/scan"
-          className="inline-flex items-center space-x-3 text-olive-600 hover:text-olive-700 mb-8 group bg-white/80 backdrop-blur-sm px-6 py-3 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-olive-100"
+          className="inline-flex items-center space-x-3 text-primary-600 hover:text-primary-700 mb-8 group bg-white/80 backdrop-blur-sm px-6 py-3 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-primary-100"
         >
           <ArrowLeft className="h-5 w-5 group-hover:-translate-x-2 transition-transform duration-300" />
           <span className="font-semibold">Back to Scanner</span>
@@ -45,20 +45,20 @@ const DrugInfoPage: React.FC = () => {
 
         <div className="grid lg:grid-cols-3 gap-10">
           <div className="lg:col-span-2 space-y-8">
-            <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-10 border border-olive-100">
+            <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-10 border border-primary-100">
               <div className="flex items-start space-x-6">
                 <div className="relative">
-                  <div className="absolute inset-0 bg-olive-400 rounded-full blur-xl opacity-30"></div>
-                  <div className="relative bg-gradient-to-br from-olive-100 to-olive-200 p-6 rounded-2xl shadow-lg">
-                    <Pill className="h-12 w-12 text-olive-600" />
+                  <div className="absolute inset-0 bg-primary-400 rounded-full blur-xl opacity-30"></div>
+                  <div className="relative bg-gradient-to-br from-primary-100 to-primary-200 p-6 rounded-2xl shadow-lg">
+                    <Pill className="h-12 w-12 text-primary-600" />
                   </div>
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center space-x-3 mb-4">
                     <h1 className="text-4xl font-bold text-gray-900">{drug.name}</h1>
-                    <div className="flex items-center space-x-1 bg-olive-100 px-3 py-1 rounded-full">
-                      <Star className="h-4 w-4 text-olive-600" />
-                      <span className="text-sm font-semibold text-olive-700">Verified</span>
+                    <div className="flex items-center space-x-1 bg-primary-100 px-3 py-1 rounded-full">
+                      <Star className="h-4 w-4 text-primary-600" />
+                      <span className="text-sm font-semibold text-primary-700">Verified</span>
                     </div>
                     <div className="flex items-center space-x-1 bg-blue-100 px-3 py-1 rounded-full">
                       <span className="text-sm font-semibold text-blue-700">{drug.category}</span>
@@ -69,12 +69,12 @@ const DrugInfoPage: React.FC = () => {
                   
                   <div className="flex items-center space-x-4 mt-6">
 
-                    <div className="flex items-center space-x-2 text-olive-600">
+                    <div className="flex items-center space-x-2 text-primary-600">
                       <Shield className="h-5 w-5" />
                       <span className="font-semibold">FDA Approved</span>
                     </div>
 
-                    <div className="flex items-center space-x-2 text-olive-600">
+                    <div className="flex items-center space-x-2 text-primary-600">
                       <CheckCircle className="h-5 w-5" />
                       <span className="font-semibold">Quality Assured</span>
                     </div>
@@ -84,7 +84,7 @@ const DrugInfoPage: React.FC = () => {
             </div>
 
 
-            <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-10 border border-olive-100">
+            <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-10 border border-primary-100">
               <div className="flex items-center space-x-4 mb-6">
                 <div className="bg-gradient-to-br from-blue-100 to-blue-200 p-3 rounded-xl">
                   <Clock className="h-8 w-8 text-blue-600" />
@@ -92,17 +92,17 @@ const DrugInfoPage: React.FC = () => {
                 <h2 className="text-2xl font-bold text-gray-900">Dosage Information</h2>
               </div>
 
-              <div className="bg-gradient-to-r from-olive-50 to-olive-100/50 p-6 rounded-2xl border border-olive-200">
+              <div className="bg-gradient-to-r from-primary-50 to-primary-100/50 p-6 rounded-2xl border border-primary-200">
                 <p className="text-gray-800 font-semibold text-lg">{drug.dosage}</p>
 
-                <div className="mt-4 flex items-center space-x-2 text-olive-700">
+                <div className="mt-4 flex items-center space-x-2 text-primary-700">
                   <Info className="h-5 w-5" />
                   <span className="text-sm font-medium">Always follow your doctor's prescription</span>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-10 border border-olive-100">
+            <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-10 border border-primary-100">
               <div className="flex items-center space-x-4 mb-6">
                 <div className="bg-gradient-to-br from-amber-100 to-amber-200 p-3 rounded-xl">
                   <AlertTriangle className="h-8 w-8 text-amber-600" />
@@ -119,7 +119,7 @@ const DrugInfoPage: React.FC = () => {
               </ul>
             </div>
 
-            <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-10 border border-olive-100">
+            <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-10 border border-primary-100">
               <div className="flex items-center space-x-4 mb-6">
                 <div className="bg-gradient-to-br from-red-100 to-red-200 p-3 rounded-xl">
                   <AlertTriangle className="h-8 w-8 text-red-600" />
@@ -138,7 +138,7 @@ const DrugInfoPage: React.FC = () => {
           </div>
 
           <div className="space-y-8">
-            <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-olive-100">
+            <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-primary-100">
               <div className="flex items-center space-x-4 mb-6">
                 <div className="bg-gradient-to-br from-red-100 to-red-200 p-3 rounded-xl">
                   <Play className="h-8 w-8 text-red-600" />
@@ -158,16 +158,16 @@ const DrugInfoPage: React.FC = () => {
                 ></iframe>
               </div>
               <p className="text-gray-600 mt-4 leading-relaxed">
-                Learn more about <span className="font-semibold text-olive-600">{drug.name}</span>, its uses, and proper administration from medical experts.
+                Learn more about <span className="font-semibold text-primary-600">{drug.name}</span>, its uses, and proper administration from medical experts.
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-olive-50 to-olive-100 rounded-3xl shadow-2xl p-8 border border-olive-200">
+            <div className="bg-gradient-to-br from-primary-50 to-primary-100 rounded-3xl shadow-2xl p-8 border border-primary-200">
               <div className="text-center">
                 <div className="relative inline-block mb-6">
-                  <div className="absolute inset-0 bg-olive-400 rounded-full blur-xl opacity-30"></div>
+                  <div className="absolute inset-0 bg-primary-400 rounded-full blur-xl opacity-30"></div>
                   <div className="relative bg-white p-4 rounded-2xl shadow-lg">
-                    <Stethoscope className="h-12 w-12 text-olive-600 mx-auto" />
+                    <Stethoscope className="h-12 w-12 text-primary-600 mx-auto" />
                   </div>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">
@@ -178,7 +178,7 @@ const DrugInfoPage: React.FC = () => {
                 </p>
                 <Link
                   to="/doctor-recommendation"
-                  className="group bg-gradient-to-r from-olive-500 to-olive-600 text-white px-8 py-4 rounded-2xl font-bold hover:from-olive-600 hover:to-olive-700 transition-all duration-300 inline-flex items-center justify-center space-x-2 w-full shadow-xl hover:shadow-2xl hover:scale-105"
+                  className="group bg-gradient-to-r from-primary-500 to-primary-600 text-white px-8 py-4 rounded-2xl font-bold hover:from-primary-600 hover:to-primary-700 transition-all duration-300 inline-flex items-center justify-center space-x-2 w-full shadow-xl hover:shadow-2xl hover:scale-105"
                 >
                   <Heart className="h-5 w-5 group-hover:text-red-200 transition-colors duration-300" />
                   <span>Consult Doctor</span>
@@ -186,7 +186,7 @@ const DrugInfoPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-olive-100">
+            <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-primary-100">
               <h3 className="text-xl font-bold text-gray-900 mb-6">Drug Details</h3>
               <div className="space-y-6">
                 <div className="bg-gray-50 p-4 rounded-xl">

@@ -8,15 +8,15 @@ const HomePage: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-16">
         <div className="text-center">
           <div className="flex justify-center mb-8">
-            <div className="flex items-center space-x-2 bg-olive-100 px-4 py-2 rounded-full">
-              <Star className="h-4 w-4 text-olive-600" />
-              <span className="text-sm font-medium text-olive-700">Trusted by 10,000+ Users</span>
+            <div className="flex items-center space-x-2 bg-primary-100 px-4 py-2 rounded-full">
+              <Star className="h-4 w-4 text-primary-600" />
+              <span className="text-sm font-medium text-primary-700">Trusted by 10,000+ Users</span>
             </div>
           </div>
           
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
             Smart Medicine
-            <span className="block text-olive-600">
+            <span className="block text-primary-600">
               Information System
             </span>
           </h1>
@@ -29,7 +29,7 @@ const HomePage: React.FC = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Link
               to="/scan"
-              className="bg-olive-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-olive-700 transition-all duration-200 flex items-center space-x-2"
+              className="bg-primary-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-primary-700 transition-all duration-200 flex items-center space-x-2"
             >
               <QrCode className="h-5 w-5" />
               <span>Start Scanning</span>
@@ -37,7 +37,7 @@ const HomePage: React.FC = () => {
             
             <Link
               to="/qr-codes"
-              className="border border-olive-600 text-olive-600 px-8 py-3 rounded-lg font-medium hover:bg-olive-50 transition-all duration-200 flex items-center space-x-2"
+              className="border border-primary-600 text-primary-600 px-8 py-3 rounded-lg font-medium hover:bg-primary-50 transition-all duration-200 flex items-center space-x-2"
             >
               <Grid className="h-5 w-5" />
               <span>View QR Codes</span>
@@ -45,7 +45,7 @@ const HomePage: React.FC = () => {
             
             <Link
               to="/reminders"
-              className="border border-olive-600 text-olive-600 px-8 py-3 rounded-lg font-medium hover:bg-olive-50 transition-all duration-200 flex items-center space-x-2"
+              className="border border-primary-600 text-primary-600 px-8 py-3 rounded-lg font-medium hover:bg-primary-50 transition-all duration-200 flex items-center space-x-2"
             >
               <Bell className="h-5 w-5" />
               <span>Reminders</span>
@@ -54,15 +54,15 @@ const HomePage: React.FC = () => {
 
           <div className="grid grid-cols-3 gap-6 max-w-xl mx-auto">
             <div className="text-center">
-              <div className="text-2xl font-bold text-olive-600 mb-1">10K+</div>
+              <div className="text-2xl font-bold text-primary-600 mb-1">10K+</div>
               <div className="text-sm text-gray-600">Medicines Scanned</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-olive-600 mb-1">500+</div>
+              <div className="text-2xl font-bold text-primary-600 mb-1">500+</div>
               <div className="text-sm text-gray-600">Expert Doctors</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-olive-600 mb-1">24/7</div>
+              <div className="text-2xl font-bold text-primary-600 mb-1">24/7</div>
               <div className="text-sm text-gray-600">Support Available</div>
             </div>
           </div>
@@ -82,8 +82,8 @@ const HomePage: React.FC = () => {
         
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           <div className="bg-white p-8 rounded-lg shadow-md">
-            <div className="bg-olive-100 w-16 h-16 rounded-lg flex items-center justify-center mb-6">
-              <Shield className="h-8 w-8 text-olive-600" />
+            <div className="bg-primary-100 w-16 h-16 rounded-lg flex items-center justify-center mb-6">
+              <Shield className="h-8 w-8 text-primary-600" />
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-4">Safe & Reliable</h3>
             <p className="text-gray-600">
@@ -92,8 +92,8 @@ const HomePage: React.FC = () => {
           </div>
 
           <div className="bg-white p-8 rounded-lg shadow-md">
-            <div className="bg-olive-100 w-16 h-16 rounded-lg flex items-center justify-center mb-6">
-              <Zap className="h-8 w-8 text-olive-600" />
+            <div className="bg-primary-100 w-16 h-16 rounded-lg flex items-center justify-center mb-6">
+              <Zap className="h-8 w-8 text-primary-600" />
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-4">Instant Access</h3>
             <p className="text-gray-600">
@@ -102,8 +102,8 @@ const HomePage: React.FC = () => {
           </div>
 
           <div className="bg-white p-8 rounded-lg shadow-md">
-            <div className="bg-olive-100 w-16 h-16 rounded-lg flex items-center justify-center mb-6">
-              <Users className="h-8 w-8 text-olive-600" />
+            <div className="bg-primary-100 w-16 h-16 rounded-lg flex items-center justify-center mb-6">
+              <Users className="h-8 w-8 text-primary-600" />
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-4">Expert Support</h3>
             <p className="text-gray-600">
@@ -112,12 +112,12 @@ const HomePage: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-olive-600 rounded-lg p-10 text-center text-white">
+        <div className="bg-primary-600 rounded-lg p-10 text-center text-white">
           <h3 className="text-2xl font-bold mb-4">Ready to Get Started?</h3>
           <p className="text-lg mb-6 opacity-90">Join thousands of users who trust MediScan for their healthcare needs</p>
           <Link
             to="/scan"
-            className="inline-flex items-center space-x-2 bg-white text-olive-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-50 transition-all duration-200"
+            className="inline-flex items-center space-x-2 bg-white text-primary-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-50 transition-all duration-200"
           >
             <QrCode className="h-5 w-5" />
             <span>Start Your First Scan</span>
