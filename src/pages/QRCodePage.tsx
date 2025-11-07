@@ -27,24 +27,17 @@ const QRCodePage: React.FC = () => {
       
       for (const drug of drugs) {
         try {
-          const qrData = {
-            drugId: drug.id,
-            name: drug.name,
-            genericName: drug.genericName,
-            manufacturer: drug.manufacturer,
-            strength: drug.strength,
-            form: drug.form,
-            url: `${window.location.origin}/drug/${drug.id}`
-          };
-          
-          const qrCodeDataURL = await QRCode.toDataURL(JSON.stringify(qrData), {
-            width: 200,
-            margin: 2,
-            color: {
-              dark: '#000000',
-              light: '#FFFFFF'
-            }
-          });
+          const qrData = JSON.stringify({
+  drugId: drug.id
+});
+const qrCodeDataURL = await QRCode.toDataURL(`${window.location.origin}/drug/${drug.id}`, {
+  width: 200,
+  margin: 2,
+  color: {
+    dark: '#000000',
+    light: '#FFFFFF'
+  }
+});
           
           codes[drug.id] = qrCodeDataURL;
         } catch (error) {

@@ -1,96 +1,30 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { QrCode, Camera, Upload, Zap, Shield, Clock, Sparkles } from 'lucide-react';
-import { Html5QrcodeScanner } from "html5-qrcode"; 
+import { QrCode, Camera, Upload, Zap, Shield, Clock } from 'lucide-react';
+import { Html5QrcodeScanner } from "html5-qrcode";
 import { getAllDrugs } from '../data/drugsDatabase';
 
 const ScanPage: React.FC = () => {
   const [isScanning, setIsScanning] = useState(false);
   const [qrResult, setQrResult] = useState<string>('');
   const [scanError, setScanError] = useState<string>('');
-  // Note: The correct type for scannerRef.current should be the instance type 
-  // which is typically just 'any' or the class itself, but for simplicity, we'll keep it as 
-  // Html5QrcodeScanner for type checking, assuming Html5QrcodeScanner is a class.
-  const scannerRef = useRef<Html5QrcodeScanner | null>(null); 
+  const scannerRef = useRef<any>(null);
   const navigate = useNavigate();
   const drugs = getAllDrugs();
 
-  const startCamera = async () => {
-    try {
-      setIsScanning(true);
-      setScanError('');
-      
-      // Initialize QR code scanner
-      // The 'qr-reader' is the ID of the HTML element where the video feed will render
-      const scanner = new Html5QrcodeScanner(
-        "qr-reader",
-        { 
-          fps: 10,
-          qrbox: { width: 250, height: 250 },
-          aspectRatio: 1.0
-        },
-        false // This parameter controls whether to show verbose logging
-      );
-
-      scanner.render(
-        (decodedText, decodedResult) => {
-          console.log('QR Code scanned:', decodedText);
-          handleQRCodeResult(decodedText);
-          // Only call clear after a successful scan
-          if (scannerRef.current) {
-            // Important: `clear()` stops the camera
-            scannerRef.current.clear();
-          }
-          setIsScanning(false);
-        },
-        (error) => {
-          // Ignore small errors; the library handles non-QR code noise internally
-          // The primary camera failure is caught in the outer catch block
-        }
-      );
-
-      // Store the scanner instance
-      scannerRef.current = scanner as any; 
-    } catch (error) {
-      // This block handles true errors like permission denied or no camera found
-      console.error('Error starting camera:', error);
-      setScanError('Failed to start camera. Please check permissions.');
-      setIsScanning(false);
-    }
-  };
-
-  const stopCamera = () => {
-    if (scannerRef.current) {
-      scannerRef.current.clear()
-        .then(() => {
-          console.log("Scanner stopped successfully.");
-        })
-        .catch((err) => {
-          console.error("Error stopping scanner:", err);
-        });
-      scannerRef.current = null;
-    }
-    setIsScanning(false);
-  };
-
   const handleQRCodeResult = (qrData: string) => {
-    setScanError(''); // Clear previous error
-
+    setScanError('');
     try {
-      // Try to parse as JSON first (for our generated QR codes from QRCodePage)
       const parsedData = JSON.parse(qrData);
       if (parsedData.drugId) {
         navigate(`/drug/${parsedData.drugId}`);
         return;
       }
     } catch (e) {
-      // If not JSON, treat as plain text (e.g., a simple drug name)
       console.log('Plain text QR code:', qrData);
     }
 
-    // Check if it's a URL to our drug page (e.g., if a share link was scanned)
     if (qrData.includes('/drug/')) {
-      // Simple regex or string split to extract the ID
       const drugIdMatch = qrData.match(/\/drug\/([^\/?#]+)/);
       if (drugIdMatch && drugIdMatch[1]) {
         navigate(`/drug/${drugIdMatch[1]}`);
@@ -98,8 +32,7 @@ const ScanPage: React.FC = () => {
       }
     }
 
-    // Check if it matches any drug name directly (manual or simple QR)
-    const matchedDrug = drugs.find(drug => 
+    const matchedDrug = drugs.find(drug =>
       drug.name.toLowerCase() === qrData.toLowerCase() ||
       drug.genericName.toLowerCase() === qrData.toLowerCase()
     );
@@ -111,16 +44,64 @@ const ScanPage: React.FC = () => {
     }
   };
 
+  const startCamera = () => {
+    setIsScanning(true);
+    setScanError('');
+
+    // Wait for the element to exist in the DOM
+    setTimeout(() => {
+      const qrReaderElem = document.getElementById('qr-reader');
+      if (!qrReaderElem) {
+        console.error("QR Reader element not found yet!");
+        setScanError('Failed to find camera element. Please try again.');
+        setIsScanning(false);
+        return;
+      }
+
+      const scanner = new Html5QrcodeScanner(
+        "qr-reader",
+        {
+          fps: 10,
+          qrbox: { width: 250, height: 250 },
+          aspectRatio: 1.0
+        },
+        false
+      );
+
+      scanner.render(
+        (decodedText) => {
+          console.log('QR Code scanned:', decodedText);
+          handleQRCodeResult(decodedText);
+          scanner.clear();
+          setIsScanning(false);
+        },
+        (error) => {
+          // Ignored minor scanning errors
+        }
+      );
+
+      scannerRef.current = scanner;
+    }, 300); // give React time to render the div
+  };
+
+  const stopCamera = () => {
+    if (scannerRef.current) {
+      scannerRef.current.clear()
+        .then(() => console.log("Scanner stopped successfully."))
+        .catch((err: any) => console.error("Error stopping scanner:", err));
+      scannerRef.current = null;
+    }
+    setIsScanning(false);
+  };
+
   const handleManualInput = () => {
     if (qrResult.trim()) {
       handleQRCodeResult(qrResult.trim());
     }
   };
 
-  // 💥 CRITICAL FIX: Use the drug's actual ID for navigation
   const simulateScan = (drugName: string) => {
     const matchedDrug = drugs.find(drug => drug.name === drugName);
-    
     if (matchedDrug) {
       navigate(`/drug/${matchedDrug.id}`);
     } else {
@@ -129,7 +110,6 @@ const ScanPage: React.FC = () => {
   };
 
   useEffect(() => {
-    // Cleanup function to stop the camera when the component unmounts
     return () => {
       stopCamera();
     };
@@ -143,17 +123,14 @@ const ScanPage: React.FC = () => {
             <div className="bg-primary-600 p-6 rounded-3xl shadow-lg">
               <QrCode className="h-16 w-16 text-white" />
             </div>
-            {/* The primary color in your Tailwind config is primary-600, 
-            which is likely defined as a blue/purple color. */}
           </div>
-          
+
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Scan Medicine QR Code
           </h1>
-          
+
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
-            Point your camera at the QR code on your medicine package to get detailed information, usage instructions, 
-            and related educational content instantly.
+            Point your camera at the QR code on your medicine package to get detailed information instantly.
           </p>
 
           <div className="flex justify-center space-x-8 mb-8">
@@ -173,28 +150,25 @@ const ScanPage: React.FC = () => {
         </div>
 
         <div className="bg-white rounded-3xl shadow-lg overflow-hidden border border-gray-200">
-          {/* Camera Section */}
           <div className="p-10">
             <div className="bg-gray-50 rounded-2xl p-10 mb-8">
-              {isScanning ? (
-                <div className="max-w-md mx-auto">
-                  {/* THIS IS THE ELEMENT WHERE THE CAMERA STREAM WILL RENDER */}
+              <div className="max-w-md mx-auto">
+                {isScanning ? (
                   <div id="qr-reader" className="w-full"></div>
-                </div>
-              ) : (
-                <div className="aspect-square max-w-md mx-auto bg-gray-100 rounded-2xl flex items-center justify-center border-2 border-dashed border-gray-300">
-                  <div className="text-center">
-                    <div className="mb-6">
-                      <div className="bg-white rounded-full p-8 shadow-lg mx-auto w-fit">
-                        <Camera className="h-20 w-20 text-primary-600 mx-auto" />
+                ) : (
+                  <div className="aspect-square bg-gray-100 rounded-2xl flex items-center justify-center border-2 border-dashed border-gray-300">
+                    <div className="text-center">
+                      <div className="mb-6">
+                        <div className="bg-white rounded-full p-8 shadow-lg mx-auto w-fit">
+                          <Camera className="h-20 w-20 text-primary-600 mx-auto" />
+                        </div>
                       </div>
+                      <h3 className="text-2xl font-bold text-gray-800 mb-3">Ready to Scan</h3>
+                      <p className="text-gray-600 text-lg mb-6">Camera preview will appear here</p>
                     </div>
-                    
-                    <h3 className="text-2xl font-bold text-gray-800 mb-3">Ready to Scan</h3>
-                    <p className="text-gray-600 text-lg mb-6">Camera preview will appear here</p>
                   </div>
-                </div>
-              )}
+                )}
+              </div>
             </div>
 
             {scanError && (
@@ -223,12 +197,11 @@ const ScanPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Manual Input Section */}
           <div className="border-t border-gray-200 p-10 bg-gray-50">
             <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">
               Or Enter Medicine Name Manually
             </h3>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input
                 type="text"
@@ -248,12 +221,11 @@ const ScanPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Demo Medicines */}
           <div className="border-t border-gray-200 p-10">
             <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center">
               Try Demo Medicines
             </h3>
-            
+
             <div className="grid sm:grid-cols-3 lg:grid-cols-4 gap-4">
               {drugs.slice(0, 8).map((drug) => (
                 <button
@@ -268,7 +240,7 @@ const ScanPage: React.FC = () => {
                 </button>
               ))}
             </div>
-            
+
             <div className="text-center mt-6">
               <Link
                 to="/qr-codes"
